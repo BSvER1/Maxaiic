@@ -19,6 +19,6 @@ Thumbs.db
 obj/
 [Rr]elease*/
 _ReSharper*/
-Build
-Temp
-Library
+Build/
+Temp/
+Library/
