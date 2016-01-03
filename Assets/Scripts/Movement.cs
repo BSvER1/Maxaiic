@@ -10,7 +10,7 @@ public class Movement : MonoBehaviour
 
     public float thrustMod;
     public float turnMod;
-
+    public float maxAngVelocity;
 
     private Vector3 camPosOffset;
     private Quaternion camRotOffset;
@@ -22,19 +22,21 @@ public class Movement : MonoBehaviour
     {
         camPosOffset = followCam.GetComponent<Transform>().position - ship.position;
         camRotOffset = followCam.GetComponent<Transform>().rotation;
-
         rb = ship.GetComponent<Rigidbody>();
+        rb.maxAngularVelocity = maxAngVelocity;
+
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update ()
     {
         float thrust = Input.GetAxis("Vertical");
         float turn = Input.GetAxis("Horizontal");
 
         rb.AddForce(ship.up * thrustMod * thrust, ForceMode.Force);
-
-        rb.AddTorque(ship.forward * -1 * turnMod * turn);
+        Debug.Log(rb.angularVelocity);
+       // rb.angularVelocity.Set(0, turn * turnMod, 0); // why doesnt this work??
+       rb.AddTorque(ship.forward * -1 * turnMod * turn);
 
 
 	}
