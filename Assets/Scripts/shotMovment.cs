@@ -11,9 +11,4 @@ public class shotMovment : MonoBehaviour {
         rb.AddForce(transform.up * shotSpeed, ForceMode.Impulse);
 
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }
