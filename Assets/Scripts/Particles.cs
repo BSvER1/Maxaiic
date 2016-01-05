@@ -1,18 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.Networking;
 
-public class Particles : NetworkBehaviour {
+public class Particles : MonoBehaviour {
 
 
     public float ParticleMod;
 	
 	// Update is called once per frame
 	void Update () {
-        if (isLocalPlayer)
-        {
-            gameObject.GetComponent<ParticleSystem>().startSize = Input.GetAxis("Vertical") * ParticleMod;
-        }
+
+//if (isLocalPlayer)
+        //{
+            GetComponent<ParticleSystem>().startSize = Input.GetAxis("Vertical") * ParticleMod;
+       // }
+       // else if (! isLocalPlayer)
+      //  {
+     //       GetComponent<ParticleSystem>().startSize = 0;
+       // }
         
 	}
 }
