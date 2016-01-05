@@ -20,9 +20,9 @@ public class Player_NetworkSetup : NetworkBehaviour {
             weapons = GetComponent<Weapons>();
             weapons.enabled = true;
 
-            cam = GetComponent<Camera>();
+            cam = GetComponentInChildren<Camera>();
 
-            cam.GetComponent<Camera>().enabled = true;
+            cam.enabled = true;
             cam.gameObject.SetActive(true);
 
             cam.GetComponent<AudioListener>().enabled = true;
