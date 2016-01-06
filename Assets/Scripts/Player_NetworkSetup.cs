@@ -4,30 +4,33 @@ using UnityEngine.Networking;
 
 public class Player_NetworkSetup : NetworkBehaviour {
 
-    Movement mov;
+    PlayerMovement mov;
     Weapons weapons;
-
-    Camera cam;
+    PlayerCameraCreator cam;
 
 	// Use this for initialization
-	void Start () {
-	    
+	void Start ()
+    {
         if (isLocalPlayer)
         {
-            mov = GetComponent<Movement>();
+            mov = GetComponent<PlayerMovement>();
             mov.enabled = true;
 
             weapons = GetComponent<Weapons>();
             weapons.enabled = true;
 
+<<<<<<< HEAD
+            cam = GetComponent<PlayerCameraCreator>();
+            cam.enabled = true;
+=======
             cam = GetComponentInChildren<Camera>();
 
             cam.enabled = true;
             cam.gameObject.SetActive(true);
 
             cam.GetComponent<AudioListener>().enabled = true;
+>>>>>>> master
         }
-        
 	}
 	
 }
