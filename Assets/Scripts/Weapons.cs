@@ -18,6 +18,7 @@ public class Weapons : NetworkBehaviour {
                 nextFire = Time.time + fireRate;
                 GameObject clone = Instantiate(projectile, shotPoint.GetComponent<Transform>().position, shotPoint.GetComponent<Transform>().rotation) as GameObject;
                 //Instantiate(projectile, shotPoint.GetComponent<Transform>().position, shotPoint.GetComponent<Transform>().rotation);
+                //Destroy(clone, 2.0f);
                 NetworkServer.Spawn(clone);
             }
         }

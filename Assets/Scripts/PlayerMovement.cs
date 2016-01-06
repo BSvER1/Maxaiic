@@ -27,7 +27,16 @@ public class PlayerMovement : MonoBehaviour
     {
         float thrust = Input.GetAxis("Vertical");
         float turn = Input.GetAxis("Horizontal");
-        rb.AddForce(transform.up * thrustMod * thrust, ForceMode.Force);
+
+        if (thrust > 0)
+        {
+            rb.AddForce(transform.up * thrustMod * thrust, ForceMode.Force);
+        }
+        else
+        {
+            rb.AddForce(transform.up * thrustMod * thrust * 0.1f, ForceMode.Force);
+        }
+        
         rb.angularVelocity = new Vector3(0, turn * turnMod, 0); 
         //rb.AddTorque(ship.forward * -1 * turnMod * turn);
         rb.drag = Mathf.Clamp(rb.velocity.sqrMagnitude * dragMaxSpeedConst - dragActivationConst, 0, Mathf.Infinity);
