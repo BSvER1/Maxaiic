@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
     public float thrustMod;
     public float turnMod;
     public float maxAngVelocity;
-    public float maxVelocity;
+    //public float maxVelocity;
 
     public float dragMaxSpeedConst = 0.1f;
     public float dragActivationConst = 0.25f;
@@ -17,8 +17,6 @@ public class PlayerMovement : MonoBehaviour
     void Start ()
     {
         transform.rotation = Quaternion.Euler(90, 0, 0);
-        //camPosOffset = followCam.GetComponent<Transform>().position - transform.position;    
-        //camRotOffset = followCam.GetComponent<Transform>().rotation;
         rb = GetComponent<Rigidbody>();
         rb.maxAngularVelocity = maxAngVelocity;
 
