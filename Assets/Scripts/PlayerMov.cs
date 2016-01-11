@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Player1Mov : MonoBehaviour {
+public class PlayerMov : MonoBehaviour {
 
     private float joystickMovementThreshold = 0.85f;
 
@@ -19,10 +19,14 @@ public class Player1Mov : MonoBehaviour {
 
     public float degreeJitterReduce = 6; //this should be 3 times smaller then the rotate speed, acording to Max's crack theeory
 
+    public int playerNum = 1;
+
+    public Vector3 direction = new Vector3(0, 0, 1);
+
 
 
     // Use this for initialization
-void Start () {
+    void Start () {
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.maxAngularVelocity = 1000;
     }
@@ -32,12 +36,23 @@ void Start () {
 
         Rigidbody rb = GetComponent<Rigidbody>();
 
-        if (Input.GetAxis("Player1_Acceleration") > 0)
+        if (Input.GetAxis("Player"+playerNum+"_Acceleration") > 0)
         {
-            rb.AddForce(transform.right * Input.GetAxis("Player1_Acceleration") * accelerationMod, ForceMode.Force);
+            if (direction.z == 1)
+                rb.AddForce(transform.forward * Input.GetAxis("Player" + playerNum + "_Acceleration") * accelerationMod, ForceMode.Force);
+            if (direction.z == -1)
+                rb.AddForce(transform.forward * -1 * Input.GetAxis("Player" + playerNum + "_Acceleration") * accelerationMod, ForceMode.Force);
+            if (direction.y == 1)
+                rb.AddForce(transform.up * Input.GetAxis("Player" + playerNum + "_Acceleration") * accelerationMod, ForceMode.Force);
+            if (direction.y == -1)
+                rb.AddForce(transform.up * -1 * Input.GetAxis("Player" + playerNum + "_Acceleration") * accelerationMod, ForceMode.Force);
+            if (direction.x == 1)
+                rb.AddForce(transform.right * Input.GetAxis("Player" + playerNum + "_Acceleration") * accelerationMod, ForceMode.Force);
+            if (direction.x == -1)
+                rb.AddForce(transform.right * -1 * Input.GetAxis("Player" + playerNum + "_Acceleration") * accelerationMod, ForceMode.Force);
         }
 
-        Vector2 joyPos = new Vector2(Mathf.Rad2Deg * Mathf.Asin(Input.GetAxis("Player1_Horizontal")), Mathf.Rad2Deg * Mathf.Asin(Input.GetAxis("Player1_Vertical")));
+        Vector2 joyPos = new Vector2(Mathf.Rad2Deg * Mathf.Asin(Input.GetAxis("Player" + playerNum + "_Horizontal")), Mathf.Rad2Deg * Mathf.Asin(Input.GetAxis("Player" + playerNum + "_Vertical")));
 
         shipAngle = transform.rotation.eulerAngles.y % 360 + 360;
 

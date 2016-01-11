@@ -68,13 +68,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\CameraManager.cs" />
     <Compile Include="Assets\DeleteMe.cs" />
     <Compile Include="Assets\EndlessStars.cs" />
-    <Compile Include="Assets\Player1Mov.cs" />
     <Compile Include="Assets\Player2Mov.cs" />
     <Compile Include="Assets\Scripts\LaserLightColorPicker.cs" />
+    <Compile Include="Assets\Scripts\LaunchProjectile.cs" />
     <Compile Include="Assets\Scripts\Particles.cs" />
     <Compile Include="Assets\Scripts\PlayerCameraCreator.cs" />
+    <Compile Include="Assets\Scripts\PlayerMov.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Player_NetworkSetup.cs" />
     <Compile Include="Assets\Scripts\SyncTransform.cs" />
