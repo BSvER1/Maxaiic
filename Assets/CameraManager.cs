@@ -6,8 +6,11 @@ public class CameraManager : MonoBehaviour {
 
     public List<GameObject> players;
     public Vector3 cameraOffset;
+    
 
-	void Start () {
+    private float adjacent;
+
+    void Start () {
 	
 	}
 	
@@ -25,6 +28,15 @@ public class CameraManager : MonoBehaviour {
 
         gameObject.transform.position = meanPos + cameraOffset;
 
+        float opposite = Mathf.Sqrt(((players[0].transform.position.x - players[1].transform.position.x) * (players[0].transform.position.x - players[1].transform.position.x) +
+             (players[0].transform.position.y - players[1].transform.position.y) * (players[0].transform.position.y - players[1].transform.position.y)));
+        // Distance^2 = (x2 -x1)^2 + (y2-y1)^2  this is formula for distance between 2 points. 
+
+
+
+        adjacent = opposite / Mathf.Atan(GetComponent<Camera>().fieldOfView);
+
+        transform.Translate(0, 0, -1 * (adjacent));
 
     }
 }
