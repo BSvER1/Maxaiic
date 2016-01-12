@@ -31,7 +31,7 @@ public class CameraManager : MonoBehaviour {
         float opposite = Mathf.Sqrt(((players[0].transform.position.x - players[1].transform.position.x) * (players[0].transform.position.x - players[1].transform.position.x) +
              (players[0].transform.position.y - players[1].transform.position.y) * (players[0].transform.position.y - players[1].transform.position.y)));
         // Distance^2 = (x2 -x1)^2 + (y2-y1)^2  this is formula for distance between 2 points. 
-
+        //this also needs to be halved... but when i half it it has oppisite effect... not sure whats going on
 
 
         adjacent = opposite / Mathf.Atan(GetComponent<Camera>().fieldOfView);
